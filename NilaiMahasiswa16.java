@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class NilaiMahasiswa16 {
 
-    public static int[] isianArray(int jumlah) {
+    public static int[] isianArray(int jumlah)  {
         int nilaiMahasiswa[] = new int[jumlah];
         Scanner input = new Scanner(System.in);
         for (int i = 1; i <= jumlah; i++) {
