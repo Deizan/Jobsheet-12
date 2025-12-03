@@ -6,7 +6,7 @@ public class RekapPenjualanCafe16 {
     public static int[][] penjualan = {};
     public static Scanner sc = new Scanner(System.in);
 
-    public static void inputanDinamisMenu(int jumlahHari) {
+    public static void inputanDinamisMenu(int jumlahHari)  {
         System.out.print("Masukkan jumlah menu: ");
         int jumlahMenu = sc.nextInt();
         sc.nextLine(); 
@@ -99,7 +99,7 @@ public class RekapPenjualanCafe16 {
         tampilkanDataPenjualan(jumlahHari);
         menuPenjualanTertinggi(jumlahHari);
         rataRataPenjualan(jumlahHari);
-        
+
         sc.close();
     }   
 }
