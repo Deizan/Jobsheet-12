@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class HitungBalok16 {
 
-    static int hitungLuas(int pjg, int lb){
+    static int hitungLuas(int pjg, int lb) {
         int Luas = pjg * lb;
         return Luas;
     }
