@@ -1,5 +1,105 @@
+import java.util.Scanner;
+
 public class RekapPenjualanCafe16 {
-    public static void main(String[] args) {
-        System.out.println("Rekap Penjualan Cafe");
+
+    public static String[] menu = {};
+    public static int[][] penjualan = {};
+    public static Scanner sc = new Scanner(System.in);
+
+    public static void inputanDinamisMenu(int jumlahHari) {
+        System.out.print("Masukkan jumlah menu: ");
+        int jumlahMenu = sc.nextInt();
+        sc.nextLine(); 
+
+        menu = new String[jumlahMenu];
+        penjualan = new int[jumlahMenu][jumlahHari];
+
+        for (int i = 0; i < jumlahMenu; i++) {
+            System.out.print("Masukkan nama menu ke-" + (i + 1) + ": ");
+            menu[i] = sc.nextLine();
+        }
     }
+
+    public static int inputanDinamisHari() {
+        System.out.print("Masukkan jumlah hari penjualan: ");
+        int jumlahHari = sc.nextInt();
+
+        for (int i = 0; i < menu.length; i++) {
+            penjualan[i] = new int[jumlahHari];
+        }
+        return jumlahHari;
+    }
+
+    public static void inputDataPenjualan(int jumlahHari) {
+        System.out.println("====Input Data Penjualan Selama " + jumlahHari + " Hari====");
+        for (int i = 0; i < menu.length; i++) {
+            System.out.println("Nama Menu: " + menu[i]);
+            for (int j = 0; j < jumlahHari; j++) {
+                System.out.print("Penjualan Hari ke-" + (j + 1) + ": ");
+                penjualan[i][j] = sc.nextInt();
+            }
+            System.out.println();
+        }
+    }
+
+    public static void tampilkanDataPenjualan(int jumlahHari) {
+        System.out.println("\n====Data Penjualan Selama " + jumlahHari + " Hari====");
+        System.out.print("Menu\t\t\t");
+        for (int i = 1; i <= jumlahHari; i++) {
+            System.out.print("H" + i + "\t");
+        }
+        System.out.println();
+
+        for (int i = 0; i < menu.length; i++) {
+            System.out.print(menu[i] + (menu[i].length() < jumlahHari ? "\t\t\t" : "\t\t"));
+            for (int j = 0; j < jumlahHari; j++) {
+                System.out.print(penjualan[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+    
+    public static void menuPenjualanTertinggi(int jumlahHari) {
+        int maxPenjualan = 0;
+        int indexMenuTertinggi = 0;
+
+        for (int i = 0; i < menu.length; i++) {
+            int total = 0;
+            for (int j = 0; j < jumlahHari; j++) {
+                total += penjualan[i][j];
+            }
+            if (total > maxPenjualan) {
+                maxPenjualan = total;
+                indexMenuTertinggi = i;
+            }
+        }
+
+        System.out.println("\nMenu dengan penjualan tertinggi: " + menu[indexMenuTertinggi]);
+        System.out.println("Total penjualan: " + maxPenjualan);
+    }
+
+    public static void rataRataPenjualan(int jumlahHari) {
+        System.out.println("\nRata-rata Penjualan per Menu:");
+        for (int i = 0; i < menu.length; i++) {
+            double total = 0;
+            for (int j = 0; j < jumlahHari; j++) {
+                total += penjualan[i][j];
+            }
+            double rataRata = total / jumlahHari;
+            System.out.println(menu[i] + ": " + rataRata);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        int jumlahHari = inputanDinamisHari();
+        inputanDinamisMenu(jumlahHari);
+        inputDataPenjualan(jumlahHari);
+        tampilkanDataPenjualan(jumlahHari);
+        menuPenjualanTertinggi(jumlahHari);
+        rataRataPenjualan(jumlahHari);
+        
+        sc.close();
+    }   
 }
