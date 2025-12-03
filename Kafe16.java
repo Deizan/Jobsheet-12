@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Kafe16 {
 
-    public static int HitungTotalHarga(int pilihanMenu, int banyakItem, String KodePromo)  {
+    public static int HitungTotalHarga(int pilihanMenu, int banyakItem, String KodePromo) {
       
       
       int[] hargaItems = {15000, 20000, 22000, 12000, 10000, 18000};
